@@ -1,5 +1,5 @@
 #include "main.h"
-/** 
+/**
  * swap_int - swap argument
  * @a: first argument
  * @b: second argument
