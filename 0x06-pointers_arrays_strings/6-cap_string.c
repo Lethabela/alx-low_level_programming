@@ -5,7 +5,7 @@
  *
  * Return: charcter string
  */
-char *cap_string(char *)
+char *cap_string(char *n)
 {
 	int i;
 
