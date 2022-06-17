@@ -4,6 +4,9 @@
  * @dest: first argument
  * @src: second argument
  * @n: third argument
+ *
+ * Description: return results
+ *
  * Return: char
  */
 char *_strncpy(char *dest, char *src, int n)
