@@ -1,7 +1,8 @@
 #include "main.h"
 /**
- * string_topper - change lower to upper case
+ * string_toupper - change lower to upper case
  * @n: ponter
+ * Description: return results
  * Return: n
  */
 char *string_toupper(char *n)

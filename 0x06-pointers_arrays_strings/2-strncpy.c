@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _strncpy = copy a string
+ * _strncpy - copy a string
  * @dest: first argument
  * @src: second argument
  * @n: third argument
