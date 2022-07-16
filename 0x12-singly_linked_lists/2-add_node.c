@@ -1,6 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 #include <string.h>
+
 /**
  * add_node - add new nodes to the list
  * @head; current place in the list
@@ -9,30 +10,21 @@
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *ptr = NULL;
-	size_t len = 0;
-	char *new_string = NULL;
+	list_t *new;
 
-	if (head == NULL || str == NULL)
+	if (str == NULL)
 		return (NULL);
-	/*calculate the length of the string*/
-	while (str[len] != '\0')
-		len++;
-	/*Allocating memory to duplicate the string*/
-	new_string = malloc(sizeof(char) *len);
-	if (new_string == NULL)
-		return (NULL);
-	new_string = strdup(str);
-	/*allocating memory for linked list to be added to the beginning*/
-	ptr = malloc(sizeof(list_t));
-	if (ptr == NULL)
-	{
-		free(new_string);
-		return (NULL);
-	}
-	ptr->len = len;
-	ptr->str = new_string;
-	ptr->next = *head;
-	*head = ptr;
-	return (*head);
+	new = malloc(sizeof(list_t));
+       if (new == NULL)
+	       return (NULL);
+       new->str = strdup(str);
+       if (new->str == NULL)
+       {
+	       free(new);
+	       return (NULL);
+       }
+       new->len - _strlen(new->str);
+       new->next = *head;
+       *head = new;
+       return (new);
 }
