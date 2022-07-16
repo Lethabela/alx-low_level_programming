@@ -1,5 +1,5 @@
 #include <string.h>
-#include "list.h"
+#include "lists.h"
 #include <stdlib.h>
 /**
  * @head: pointer to the first linked list
