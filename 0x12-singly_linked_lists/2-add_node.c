@@ -1,18 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
-/**
- * _strlen - gets length of the string
- * @s: string
- * Return: length of the string
- */
-int _strlen(const char *s)
-{
-	int i;
-
-	for (i = 0; s[i]; 1++);
-
-	return (i);
-}
+#include <string.h>
 /**
  * add_node - add new nodes to the list
  * @head; current place in the list
@@ -21,28 +9,30 @@ int _strlen(const char *s)
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	int i, len;
-	char *content;
-	list_t *new;
+	list_t *ptr = NULL;
+	size_t len = 0;
+	char *new_string = NULL;
 
-	if (str == NULL || head == NULL)
-		return(NULL);
-	len = _strlen(str);
-	new = *head;
-	content = malloc((len + 1) *sizeof(char));
-	if (content == NULL)
+	if (head == NULL || str == NULL)
 		return (NULL);
-	for (i = 0; str[i]; i++)
-		content[i] = str[i];
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	/*calculate the length of the string*/
+	while (str[len] != '\0')
+		len++;
+	/*Allocating memory to duplicate the string*/
+	new_string = malloc(sizeof(char) *len);
+	if (new_string == NULL)
+		return (NULL);
+	new_string = strdup(str);
+	/*allocating memory for linked list to be added to the beginning*/
+	ptr = malloc(sizeof(list_t));
+	if (ptr == NULL)
 	{
-		free(content);
+		free(new_string);
 		return (NULL);
 	}
-	new->str = content;
-	new->len = len;
-	new->next = *head;
-	*head = new;
-	return (new);
+	ptr->len = len;
+	ptr->str = new_string;
+	ptr->next = *head;
+	*head = ptr;
+	return (*head);
 }
