@@ -1,42 +1,42 @@
-#include <string.h>
 #include "lists.h"
-#include <stdlib.h>
+#include <string.h>
+
 /**
- * @head: pointer to the first linked list
- * @str: pointer to string
- * Description: return the required result
- * Return: return pointer
+ * add_node_end - add to end
+ * @head: pointer to head
+ * @str: input string
+ * Return: the address of the new element
  */
-list_t *add_nod_end(list_t *head, const char *str)
+
+list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *ptr, *temp;
-	size_t len = 0;
-	char *new_string = NULL;
-	if (head == NULL || str == NULL)
-		return (NULL);
-	while (str[len] != '\0')
-		len++;
-	new_string = malloc(sizeof(char) *len);
-	if (new_string == NULL)
-		return (NULL);
-	ptr = malloc(sizeof(list_t));
-	if (ptr == NULL)
+	list_t  *new, *ptr;
+	unsigned int len = 0;
+
+
+	new = malloc(sizeof(list_t));
+	if (new)
 	{
-		free(new_string);
-		reurn (NULL);
+		while (*(str + len))
+			len++;
+		new->str = strdup(str);
+		if (new->str)
+		{
+			new->len = len;
+			new->next = NULL;
+			if (!*head)
+			{
+				*head = new;
+				return (new);
+			}
+			ptr = *head;
+			while (ptr->next)
+				ptr = ptr->next;
+			ptr->next = new;
+			return (new);
+		}
+		free(new);
+		return (NULL);
 	}
-	ptr->str = strdup(str);
-	ptr->len = len;
-	ptr->nex = NULL;
-	if (*head == NULL)
-	{
-		*head = ptr;
-		return (*head);
-	}
-	/*store the address of the first element of linked (tem = *head) */
-	temp = *head;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = ptr;
-	return (*head);
+	return (NULL);
 }
