@@ -2,15 +2,12 @@
 
 
 /**
-
- * delete_nodeint_at_index - delete node at index of a list in head
-
+ * delete_nodeint_at_index - delete node at index 
+ * of alinked listint_t linked list
  * @head: head of list
-
  * @index: delete node
-
- * Return: 1 = SUCCESS, -1 FAIL
-
+ *
+ * Return: pointer to indexed node
  */
 
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
