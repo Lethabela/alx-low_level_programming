@@ -1,72 +1,37 @@
 #include "lists.h"
-
+#include <stdlib.h>
 
 /**
- * delete_nodeint_at_index - delete node at index 
- * of alinked listint_t linked list
- * @head: head of list
- * @index: delete node
+ * delete_nodeint_at_index - deletes the node at index index
+ * of a listint_t linked list.
+ * @head: double pointer to the first node in the list
+ * @index: index of the node to delete
  *
- * Return: pointer to indexed node
+ * Return: pointer to the indexed node
  */
-
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
-
 {
+	unsigned int i;
+	listint_t *current, *next;
 
-	unsigned int counter;
-
-	listint_t *backup, *ptr;
-
-
-	if (head && *head)
-
-	{
-
-		if (index == 0)
-
-		{
-
-			backup = *head;
-
-			*head = (*head)->next;
-
-			free(backup);
-
-			return (1);
-
-		}
-
-		ptr = *head;
-
-		for (counter = 1; ptr; counter++)
-
-		{
-
-			if (counter == (index))
-
-			{
-
-				backup = ptr;
-
-				ptr = ptr->next;
-
-				backup->next = ptr->next;
-
-				free(ptr);
-
-				return (1);
-
-			}
-
-			ptr = ptr->next;
-
-		}
-
+	if (head == NULL || *head == NULL)
 		return (-1);
-
+	if (index == 0)
+	{
+		next = (*head)->next;
+		free(*head);
+		*head = next;
+		return (1);
 	}
-
-	return (-1);
-
+	current = *head;
+	for (i = 0; i < index - 1; i++)
+	{
+		if (current->next == NULL)
+			return (-1);
+		current = current->next;
+	}
+	next = current->next;
+	current->next = next->next;
+	free(next);
+	return (1);
 }
