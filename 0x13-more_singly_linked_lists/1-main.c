@@ -1,4 +1,4 @@
-nclude <stdlib.h>
+#include <stdlib.h>
 
 #include <string.h>
 
@@ -60,4 +60,4 @@ int main(void)
 
 							        return (0);
 
-}i
+}
