@@ -1,20 +1,17 @@
 #include "main.h"
+
 /**
- * _memset - fills the memory of thearray with n bytes
- * @s: first argument
+ * _memset - main
+ * @s: output pointer
+ * @b: filling char
+ * @n: number of bytes
  *
- * @b: second argument
- * @n: third argument
- *
- * Description: return the required
+ * Return: pointer
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i;
-
-	for (i = 0; i < n; i++)
-	{
-		s[i] = b;
-	}
+	char *ps = s;
+	while (n--)
+		*ps++ = b;
 	return (s);
 }
