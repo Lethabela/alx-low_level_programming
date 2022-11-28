@@ -5,7 +5,7 @@
  * Return: 1 if prime, 0 otherwise
  */
 
-int is_prime_number(int n);
+int is_prime_number(int n)
 {
 	int prime_number(int divider, intn);
 	
